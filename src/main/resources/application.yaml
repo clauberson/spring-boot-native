@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb?MODE=MYSQL
+    username: sa
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        default_batch_fetch_size: 500
+
+security:
+  key:
+    private: classpath:app.key
+    public: classpath:app.pub
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,metrics,prometheus"
